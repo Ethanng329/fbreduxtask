@@ -1,0 +1,19 @@
+{
+  "name": "fbreduxtask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ethanng329/fbreduxtask.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ethanng329/fbreduxtask/issues"
+  },
+  "homepage": "https://github.com/Ethanng329/fbreduxtask#readme"
+}
