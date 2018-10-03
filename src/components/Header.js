@@ -5,8 +5,6 @@ export default function() {
     <div>
       {' '}
       <img src="../static/fanbyte.png" />
-      Fanbyte redux task
-      
     </div>
   );
 }

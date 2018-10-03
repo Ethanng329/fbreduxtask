@@ -24439,8 +24439,7 @@ exports.default = function () {
     'div',
     null,
     ' ',
-    _react2.default.createElement('img', { src: '../static/fanbyte.png' }),
-    'Fanbyte redux task'
+    _react2.default.createElement('img', { src: '../static/fanbyte.png' })
   );
 };
 
@@ -24490,78 +24489,91 @@ var Users = function (_React$Component) {
   }
 
   _createClass(Users, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'div',
+        "div",
         null,
-        'this is the place for displaying users:',
         _react2.default.createElement(
-          'button',
-          { onClick: this.props.fetchUsers() },
-          'Click for user info display'
+          "div",
+          { className: "button_wrapper" },
+          _react2.default.createElement(
+            "button",
+            { className: "button_style", onClick: this.props.fetchUsers() },
+            "Click for user info display"
+          )
         ),
-        this.props.users.map(function (user) {
-          return _react2.default.createElement(
-            'div',
-            { key: user.id },
-            _react2.default.createElement(
-              'ul',
-              null,
+        _react2.default.createElement(
+          "div",
+          { className: "users_container" },
+          this.props.users.map(function (user) {
+            return _react2.default.createElement(
+              "div",
+              { key: user.id, className: "user_info" },
               _react2.default.createElement(
-                'li',
+                "ul",
                 null,
-                'id#',
-                user.id
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'name:',
-                user.name
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'username:',
-                user.username
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'email:',
-                user.email
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'address:',
-                user.address.street,
-                ',',
-                user.address.suite,
-                ',',
-                ' ',
-                user.address.city
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'phone:',
-                user.phone
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'website:',
                 _react2.default.createElement(
-                  'a',
-                  { href: user.website },
-                  user.website
+                  "li",
+                  null,
+                  "id#",
+                  user.id
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  "name:",
+                  user.name
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  "username:",
+                  user.username
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  "email:",
+                  user.email
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  "address:",
+                  user.address.street,
+                  ",",
+                  user.address.suite,
+                  ",",
+                  ' ',
+                  user.address.city
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  "phone:",
+                  user.phone
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  "company: ",
+                  user.company.name
+                ),
+                _react2.default.createElement(
+                  "li",
+                  null,
+                  "website:",
+                  _react2.default.createElement(
+                    "a",
+                    { href: user.website },
+                    user.website
+                  )
                 )
               )
-            )
-          );
-        })
+            );
+          })
+        )
       );
     }
   }]);

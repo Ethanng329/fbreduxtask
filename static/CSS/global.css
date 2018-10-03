@@ -2,3 +2,57 @@
   box-sizing: border-box;
 }
 
+.button_wrapper {
+  display: flex;
+  justify-content: center;
+}
+.button_style {
+  background-color: #fd81008c;
+  border: none;
+  width: 50vh;
+  margin: 1em;
+  height: 5vh;
+}
+
+.button_style:hover {
+  background-color: #fd8100;
+}
+
+.users_container {
+  min-width: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.user_info {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 1em;
+  max-width: 40vh;
+}
+.user_info ul {
+  margin: 0.5em;
+  padding: 0;
+}
+
+.user_info li {
+  list-style: none;
+  padding: 0.4em;
+  width: 80%;
+}
+
+@media (min-width: 425px) {
+  .users_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .user_info {
+    flex: 1;
+    max-width: 40vh;
+    border: 1px solid black;
+    padding: 1.5em;
+    border-radius: 5px;
+    margin: 1.5em;
+  }
+}
