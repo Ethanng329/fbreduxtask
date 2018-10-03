@@ -24318,6 +24318,42 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
+/***/ "./src/actions/index.js":
+/*!******************************!*\
+  !*** ./src/actions/index.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchUsers = fetchUsers;
+exports.setUsersToStore = setUsersToStore;
+function fetchUsers() {
+  return function (dispatch) {
+    fetch('https://jsonplaceholder.typicode.com/users').then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      dispatch(setUsersToStore(data));
+    }).catch(function (error) {
+      return console.log(error);
+    });
+  };
+}
+
+function setUsersToStore(users) {
+  return {
+    type: 'USERS_LIST',
+    users: users
+  };
+}
+
+/***/ }),
+
 /***/ "./src/components/App.js":
 /*!*******************************!*\
   !*** ./src/components/App.js ***!
@@ -24337,6 +24373,16 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _UsersContainer = __webpack_require__(/*! ../containers/UsersContainer */ "./src/containers/UsersContainer.js");
+
+var _UsersContainer2 = _interopRequireDefault(_UsersContainer);
+
+var _Header = __webpack_require__(/*! ../components/Header */ "./src/components/Header.js");
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24361,7 +24407,8 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        'testing'
+        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(_UsersContainer2.default, null)
       );
     }
   }]);
@@ -24370,6 +24417,201 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
+
+/***/ }),
+
+/***/ "./src/components/Header.js":
+/*!**********************************!*\
+  !*** ./src/components/Header.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return _react2.default.createElement(
+    'div',
+    null,
+    ' ',
+    _react2.default.createElement('img', { src: '../static/fanbyte.png' }),
+    'Fanbyte redux task'
+  );
+};
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ "./src/components/Users.js":
+/*!*********************************!*\
+  !*** ./src/components/Users.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Users = function (_React$Component) {
+  _inherits(Users, _React$Component);
+
+  function Users(props) {
+    _classCallCheck(this, Users);
+
+    return _possibleConstructorReturn(this, (Users.__proto__ || Object.getPrototypeOf(Users)).call(this, props));
+  }
+
+  _createClass(Users, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        'this is the place for displaying users:',
+        _react2.default.createElement(
+          'button',
+          { onClick: this.props.fetchUsers() },
+          'Click for user info display'
+        ),
+        this.props.users.map(function (user) {
+          return _react2.default.createElement(
+            'div',
+            { key: user.id },
+            _react2.default.createElement(
+              'ul',
+              null,
+              _react2.default.createElement(
+                'li',
+                null,
+                'id#',
+                user.id
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'name:',
+                user.name
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'username:',
+                user.username
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'email:',
+                user.email
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'address:',
+                user.address.street,
+                ',',
+                user.address.suite,
+                ',',
+                ' ',
+                user.address.city
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'phone:',
+                user.phone
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'website:',
+                _react2.default.createElement(
+                  'a',
+                  { href: user.website },
+                  user.website
+                )
+              )
+            )
+          );
+        })
+      );
+    }
+  }]);
+
+  return Users;
+}(_react2.default.Component);
+
+exports.default = Users;
+
+/***/ }),
+
+/***/ "./src/containers/UsersContainer.js":
+/*!******************************************!*\
+  !*** ./src/containers/UsersContainer.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Users = __webpack_require__(/*! ../components/Users */ "./src/components/Users.js");
+
+var _Users2 = _interopRequireDefault(_Users);
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+  return {
+    users: reduxState.users
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchUsers: function fetchUsers() {
+      return dispatch((0, _actions.fetchUsers)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Users2.default);
 
 /***/ }),
 
@@ -24435,7 +24677,43 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
-exports.default = (0, _redux.combineReducers)({});
+var _setUsers = __webpack_require__(/*! ./setUsers */ "./src/reducers/setUsers.js");
+
+var _setUsers2 = _interopRequireDefault(_setUsers);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _redux.combineReducers)({
+  users: _setUsers2.default
+});
+
+/***/ }),
+
+/***/ "./src/reducers/setUsers.js":
+/*!**********************************!*\
+  !*** ./src/reducers/setUsers.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = setUsers;
+function setUsers() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'USERS_LIST':
+      return action.users;
+    default:
+      return state;
+  }
+}
 
 /***/ })
 
