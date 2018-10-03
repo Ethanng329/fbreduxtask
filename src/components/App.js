@@ -1,10 +1,16 @@
 import React from 'react';
+import UsersContainer from '../containers/UsersContainer';
+import Header from '../components/Header';
+import { fetchUsers } from '../actions';
 
-class App extends React.Component{
-  render () {
+class App extends React.Component {
+  render() {
     return (
-      <div>testing</div>
-    )
+      <div>
+        <Header />
+        <UsersContainer />
+      </div>
+    );
   }
 }
 
