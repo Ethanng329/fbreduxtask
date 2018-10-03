@@ -11,6 +11,16 @@
 - node.js
 - javascript
 
+## to build app:
+
+```
+npm run dev
+```
+
+```
+node server.js
+```
+
 ## team
 
 Ethan - ([Twitter](https://twitter.com/Ethanng329)) - ([Github](https://github.com/ethan329))

@@ -4,7 +4,7 @@ export default function() {
   return (
     <div>
       {' '}
-      <img src="../static/fanbyte.png" />
+      <img src="./static/fanbyte.png" />
     </div>
   );
 }
